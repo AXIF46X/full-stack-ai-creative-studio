@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Analytics } from '@vercel/analytics/next';
 import { ensureSeeded } from "@/lib/seed";
 import "./globals.css";
 
@@ -36,7 +37,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
